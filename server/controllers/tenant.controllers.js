@@ -4,8 +4,8 @@ module.exports = {
     // C
     register: (req, res) => {
         Tenant.create(req.body)
-        .then(user => {
-            res.json({ msg: "success!", user: user });
+        .then(tenant => {
+            res.json({ msg: "success!", tenant: tenant });
         })
         .catch(err => res.json(err));
     }
