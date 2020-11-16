@@ -54,6 +54,6 @@ TenantSchema.pre('save', function(next) {
     });
 });
 
-const Tenant = mongoose.model("Thingy", TenantSchema);
+const Tenant = mongoose.model("Tenant", TenantSchema);
 
 module.exports = { Tenant }
