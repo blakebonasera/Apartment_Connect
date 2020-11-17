@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 require('./config/mongoose.config');
 require('./routes/tenant.routes.js')(app);
-require('./routes/manager.routes.js')(app);
+// require('./routes/resources.routes.js')(app);
 
 app.listen(8000, () => console.log("Now listening on port 8000"));
 

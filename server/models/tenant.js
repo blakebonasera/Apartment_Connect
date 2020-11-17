@@ -26,13 +26,10 @@ const TenantSchema = new mongoose.Schema({
         required: [true, "Password is required"],
         minlength: [8, "Password must be 8 characters or longer"]
     },
-    apartment: {
-        type: String
+    maintenance: {
+        type: Boolean,
+        default: false
     },
-    backgroundCheck: {
-        // for now since we don't know what we will get back
-        type: String
-    }
 }, { timestamps: true });
 
 TenantSchema.virtual('confirmPassword')
