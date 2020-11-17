@@ -13,16 +13,11 @@ const RepairSchema = new mongoose.Schema({
         minlength:[5,"Must be longer than 5 characters!"]
     },
     urgency:{
-        type: String,
-        required:[true,"You must tell us how urgent this is."]
+        type: Number,
+        required:[true,"You must tell us how urgent this is."],
+        min: [1, "You must have sooome urgency."],
+        max: [3, "The max urgency is 3."]
     }
-    
-
-
-
-
-    
-
 }, { timestamps: true });
 
-module.exports.Repair = mongoose.model("Repair", RepairSchema);
+module.exports = {RepairSchema}
