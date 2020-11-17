@@ -48,17 +48,20 @@ module.exports = {
             .catch(err => res.json(err))
     },
     addTenant: (req, res) => {
-        Apartment.findOneAndUpdate({_id: req.params._id}, {$addToSet: {tenants: req.body}}, {new: true}) //pass back {_id: user._id}
-            .then(data => res.json({message: "success", data: data}))
+        console.log(req.body.id)
+        Apartment.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}) //pass back {_id: user._id}
+            .then(data => {
+                res.json({message: "success", data: data})
+            })
             .catch(err => res.json({message: "error", errors: err}));
     },
     addRepair: (req, res) => {
-        Apartment.findOneAndUpdate({_id: req.params._id}, {$addToSet: {repairs: req.body}}, {runValidators: true, new: true})
+        Apartment.findOneAndUpdate({_id: req.params.id}, {$addToSet: {repairs: req.body}}, {runValidators: true, new: true})
             .then(data => res.json({message: "success", data: data}))
             .catch(err => res.json({message: "error", errors: err}));
     },
     updateRepairStatus: (req, res) => {
-        Apartment.findOneAndUpdate({"repairs._id": req.params._id}, {"repairs.$.urgency": req.body}, {runValidators: true, new: true})
+        Apartment.findOneAndUpdate({"repairs._id": req.params.id}, {"repairs.$.status": req.body.status}, {runValidators: true, new: true})
             .then(data => res.json({message: "success", data: data}))
             .catch(err => res.json({message: "error", errors: err}));
     },
@@ -69,7 +72,7 @@ module.exports = {
             .catch(err => res.json(err));
     },
     removeTenant: (req, res) => {
-        Apartment.findOneAndUpdate({"tenants._id": req.params._id}, {$pull: {tenants: {_id: req.params._id}}}, {new: true})
+        Apartment.findOneAndUpdate({_id: req.params.id}, {tenants: ""}, {new: true})
             .then(data => res.json(data))
             .catch(err => res.json(err));
     }

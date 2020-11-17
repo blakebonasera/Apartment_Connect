@@ -17,6 +17,10 @@ const RepairSchema = new mongoose.Schema({
         required:[true,"You must tell us how urgent this is."],
         min: [1, "You must have sooome urgency."],
         max: [3, "The max urgency is 3."]
+    },
+    status: {
+        type: Boolean,
+        default: true
     }
 }, { timestamps: true });
 

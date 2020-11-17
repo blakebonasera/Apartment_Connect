@@ -18,5 +18,5 @@ module.exports = app => {
     app.patch('/api/users/:id', controller.updateUser);
     app.patch('/api/apartments/:id/tenants/remove', controller.removeTenant);
     // D
-    app.delete('/api/tenants/:id', controller.deleteApartment);
+    app.delete('/api/apartments/:id', controller.deleteApartment);
 }

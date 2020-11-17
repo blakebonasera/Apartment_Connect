@@ -6,7 +6,10 @@ const ApartmentSchema = new mongoose.Schema({
         type: Number,
         required: [true, "apartment must have a name."]
     },
-    tenants: [],
+    tenants: {
+        type: String,
+        default: "",
+    },
     repairs: [RepairSchema]
 }, {timestamps: true});
 
