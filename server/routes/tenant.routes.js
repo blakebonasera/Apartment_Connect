@@ -5,7 +5,7 @@ const { authenticate } = require("../config/jwt.config");
 
 module.exports = app => {
     // C
-    app.post('/api/apartments/new', authenticate, controller.createApartment);
+    app.post('/api/apartments/new', controller.createApartment);
     app.post('/api/users/new', controller.createUser);
     // R
     app.get('/api/apartments', authenticate, controller.allApartments);
