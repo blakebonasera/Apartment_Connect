@@ -12,10 +12,13 @@ const Nav = (props) => {
             <div className="" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <button className="btn btn-outline-info" onClick={logout}>Logout</button>
+                        <Link className="btn" to="/calandar">Resources Calendar</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="btn" to="/resources">Resources</Link>
+                        <Link className="btn" to="/newrepair">Request Repair</Link>
+                    </li>
+                    <li className="nav-item">
+                        <button className="btn btn-outline-danger" onClick={logout}>Logout</button>
                     </li>
                 </ul>
             </div>
