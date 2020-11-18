@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { navigate, Router} from '@reach/router';
 import './App.css';
 import Nav from './components/Nav';
@@ -7,6 +7,7 @@ import UserList from './views/UserList';
 import axios from 'axios';
 import UserDashboard from './views/UserDashboard';
 import NewRepair from './views/NewRepair';
+import Calendar from './views/calendar';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn ] = useState(JSON.parse(localStorage.getItem("loggedIn")));
@@ -34,6 +35,7 @@ function App() {
         <UserList path="/users" />
         <UserDashboard path="/dashboard" />
         <NewRepair path="/newrepair" />
+        <Calendar path="/calendar" />
       </Router>
     </div>
   );
