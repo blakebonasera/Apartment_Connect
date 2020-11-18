@@ -68,19 +68,14 @@ module.exports = {
           })
           .catch((err) => res.json(err));
       },
-    
+
       logout(req, res) {
         res
-          //jwt.sign({ _id: "" }, process.env.JWT_SECRET)
-          .cookie("usertoken", "", {
+          .cookie("usertoken", jwt.sign({ _id: "" }, process.env.JWT_SECRET), {
             httpOnly: true,
+    
           })
           .json({ msg: "ok" });
-      },
-    
-      logout2(req, res) {
-        res.clearCookie("usertoken");
-        res.json({ msg: "usertoken cookie cleared" });
       },
       getLoggedInUser(req, res) {
         const decodedJWT = jwt.decode(req.cookies.usertoken, { complete: true });
