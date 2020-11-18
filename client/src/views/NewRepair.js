@@ -52,14 +52,12 @@ const NewRepair = () => {
 
     
     return (
-        <div>
+        <div className="container offset-1">
             <div className="row">
-                <div className="col-sm-8">
+                <div className="col-sm-8 offset-sm-3">
                     <h1>Repair Request</h1>
                 </div>
-                <div className="col-sm-4">
-                    <Link to="/dashboard">Dashboard</Link>
-                </div>
+                
             </div>
             <div className="row">
                 <RepairForm 
@@ -71,9 +69,7 @@ const NewRepair = () => {
                     action="Create a Repair Request"
                 />
             </div>
-            <div>
-                <button onClick={() => navigate("/dashboard")}>Cancel</button>
-            </div>
+            
         </div>
     )
 }
