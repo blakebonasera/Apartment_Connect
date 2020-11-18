@@ -12,8 +12,10 @@ const RepairForm = props => {
                 }
                 <label htmlFor="details" className="col-sm-4">What needs to be fixed? </label>
                 <input type="text" name="details" className="col-sm-8 form-control" onChange={changeHandler} value={repair.details}/>
-
-                <label htmlFor="location" className="col-sm-4">Where is the problem located? 
+                </div>
+                <div className="row">
+                <div className="form-group">
+                <label htmlFor="location" className="col-sm-4">Where is the problem located?
                 <select name="location" onChange={changeHandler} value={repair.location}>
                     <option value="Kitchen">Kitchen</option>
                     <option value="Living Room">Living Room</option>
@@ -22,7 +24,8 @@ const RepairForm = props => {
                     <option value="Bed Room 2">Bed Room 2</option>
                 </select>
                 </label>
-
+                </div>
+                <div className="form-group">
                 <label htmlFor="urgency" className="col-sm-4">How urgent is this? 
                 <select name="urgency" onChange={changeHandler} value={repair.urgency}>
                     <option value="1">Anytime is fine</option>
@@ -31,13 +34,15 @@ const RepairForm = props => {
                 </select>
                 </label>
             </div>
-            <div>
+            <div className="form-group">
                 <label htmlFor="status" className="col-sm-4">Repair Complete:</label>
                 <input type="checkbox" name="status" className="col-sm-8 form-control" checked={repair.status} onChange={checkBoxHandler} value={repair.status}/>
             </div>
+            </div>
 
             <div className="row form-group">
-                <input type="submit" value={action} className="col offset-sm-4 btn btn-primary"/>
+                
+                <input type="submit" value={action} className="col-sm-4 offset-sm-4 btn btn-primary"/>
             </div>
         </form>
     )
