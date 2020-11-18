@@ -5,23 +5,24 @@ const { authenticate } = require("../config/jwt.config");
 
 module.exports = app => {
     // C
-    app.post('/api/apartments/new', controller.createApartment);
+    app.post('/api/apartments/new', authenticate, controller.createApartment);
     app.post('/api/users/new', controller.createUser);
     // R
-    app.get('/api/apartments', controller.allApartments);
-    app.get('/api/apartments/:id', controller.oneApartment);
+    app.get('/api/apartments', authenticate, controller.allApartments);
+    app.get('/api/apartments/:id', authenticate, controller.oneApartment);
+    
     app.get("/api/users", authenticate, uController.allUsers);
     app.get("/api/users/loggedin", authenticate, uController.getLoggedInUser);
-    app.get('/api/users/:id', controller.oneUser);
+    app.get('/api/users/:id', authenticate, controller.oneUser);
     // U
-    app.patch('/api/apartments/:id', controller.updateApartment);
-    app.patch('/api/apartments/:id/tenants/new', controller.addTenant);
-    app.patch('/api/apartments/:id/repair/new', controller.addRepair);
-    app.patch('/api/apartments/:id/repair/update', controller.updateRepairStatus);
-    app.patch('/api/users/:id', controller.updateUser);
-    app.patch('/api/apartments/:id/tenants/remove', controller.removeTenant);
+    app.patch('/api/apartments/:id', authenticate, controller.updateApartment);
+    app.patch('/api/apartments/:id/tenants/new', authenticate, controller.addTenant);
+    app.patch('/api/apartments/:id/repair/new', authenticate, controller.addRepair);
+    app.patch('/api/apartments/:id/repair/update', authenticate, controller.updateRepairStatus);
+    app.patch('/api/users/:id', authenticate, controller.updateUser);
+    app.patch('/api/apartments/:id/tenants/remove', authenticate, controller.removeTenant);
     // D
-    app.delete('/api/apartments/:id', controller.deleteApartment);
+    app.delete('/api/apartments/:id', authenticate, controller.deleteApartment);
     //login
     app.post("/api/login", uController.login);
     //logout

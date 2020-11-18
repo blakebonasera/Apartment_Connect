@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require('express'),
     cookieParser = require("cookie-parser"),
-    cors = require("cors")
+    cors = require("cors");
 
 require("./config/mongoose.config")(process.env.DB_NAME);
 

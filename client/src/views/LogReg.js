@@ -11,7 +11,7 @@ const LogReg = ({ setLoggedIn }) => {
         <SignIn setLoggedIn={setLoggedIn} />
         </div>
         <div className="col-6">
-        <SignUp />
+        <SignUp setLoggedIn={setLoggedIn} />
         </div>
         </div>
     </div>
