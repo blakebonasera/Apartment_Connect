@@ -14,6 +14,6 @@ app.use(express.json());
 require('./routes/tenant.routes.js')(app);
 // require('./routes/resources.routes.js')(app);
 
-app.listen(process.env.DB_PORT, () =>
+app.listen(process.env.appartmentConnect, () =>
   console.log(`Listening on port ${process.env.appartmentConnect}`)
 );
