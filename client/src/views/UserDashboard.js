@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Calendar from './calendar';
 
 const UserDashboard = props => {
     const [user, setUser] = useState({
@@ -31,16 +32,13 @@ const UserDashboard = props => {
                 <button className="btn btn-primary mr-5" onClick={() => request("repair") }>Request a Repair</button>
                 <button className="btn btn-primary" onClick={() => request("reserve")}>Reserve a Time</button>
             </div>
-
-            <div className="bg-dark text-light col-12 row-12">
-                {
-                    requestType === "repair" ?
-                    <p className="m-2 p-5">Repair Form goes here</p>:
-                    requestType === "reserve" ?
-                    <p className="m-2 p-5">Calendly form goes here</p>:
-                    ""
-                }
-            </div>
+            {
+                requestType === "repair" ?
+                <p className="m-2 p-5">Repair Form goes here</p>:
+                requestType === "reserve" ?
+                <Calendar path="/calendar"/>:
+                ""
+            }
             
             <div>
                 <h3>Future chat page???</h3>
