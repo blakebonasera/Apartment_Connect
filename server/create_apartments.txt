@@ -1,0 +1,10 @@
+use postman
+
+POST http://localhost:8000/api/apartments/new
+
+{"name": 507}
+
+just change the values to create a few appartments.
+
+Once you are finished reconfigure the route to require authentication 
+
