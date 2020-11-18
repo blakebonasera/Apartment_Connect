@@ -8,12 +8,13 @@ import axios from 'axios';
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn ] = useState(false);
+  const [isLoggedIn, setIsLoggedIn ] = useState(JSON.parse(localStorage.getItem("loggedIn")) || false);
 
   const logout = () => {
     axios.post('http://localhost:8000/api/logout',{}, { withCredentials: true })
     .then((res)=>{
       console.log(res);
+      localStorage.setItem("loggedIn", "false")
       setIsLoggedIn(false);
     })
     .catch(console.log);
