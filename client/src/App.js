@@ -29,7 +29,7 @@ function App() {
       <Router>
         <LogReg setLoggedIn={()=> setIsLoggedIn(true)} path="/" />
         <UserList path="/users" />
-        <UserDashboard path="/user/dashboard" />
+        <UserDashboard path="/dashboard" />
       </Router>
     </div>
   );
