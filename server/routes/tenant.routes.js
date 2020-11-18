@@ -1,5 +1,7 @@
 const { allUser } = require('../controllers/apartment.controller');
 const controller = require('../controllers/apartment.controller');
+const uController = require('../controllers/user.controllers');
+const { authenticate } = require("../config/jwt.config");
 
 module.exports = app => {
     // C
@@ -19,4 +21,12 @@ module.exports = app => {
     app.patch('/api/apartments/:id/tenants/remove', controller.removeTenant);
     // D
     app.delete('/api/apartments/:id', controller.deleteApartment);
+    //login
+    app.post("/api/login", uController.login);
+    //logout
+    app.post("/api/logout", uController.logout);
+    // this route now has to be authenticated
+    app.get("/api/users", authenticate, uController.allUsers);
+    app.get("/api/users/loggedin", authenticate, uController.getLoggedInUser);
+
 }

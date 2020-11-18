@@ -1,10 +1,11 @@
 require("dotenv").config();
+
 const express = require('express'),
     cookieParser = require("cookie-parser"),
     cors = require("cors")
-const cors = require('cors');
 
-require("./config/mongoose.config")(process.env.appartmentConnect)
+require("./config/mongoose.config")(process.env.DB_NAME);
+
 const app = express();
 
 app.use(cookieParser());
@@ -14,6 +15,6 @@ app.use(express.json());
 require('./routes/tenant.routes.js')(app);
 // require('./routes/resources.routes.js')(app);
 
-app.listen(process.env.appartmentConnect, () =>
-  console.log(`Listening on port ${process.env.appartmentConnect}`)
+app.listen(process.env.DB_PORT, () =>
+  console.log(`Listening on port ${process.env.DB_PORT}`)
 );

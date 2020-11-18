@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
     
-    mongoose.connect('mongodb://localhost/appartmentConnect', { useNewUrlParser: true, useUnifiedTopology: true })
+module.exports = db_name => {
+
+
+    mongoose.connect(`mongodb://localhost/${db_name}`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
         .then(() => console.log("DB connection established"))
         .catch(err => console.log("Something went wrong: ", err));
+}

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
+
 import axios from 'axios';
+import { navigate } from '@reach/router';
 
 const SignUp = (props) => {
     const [ firstName, setFirstName ] = useState("");
@@ -11,7 +13,7 @@ const SignUp = (props) => {
 
     const register = e => {
         e.preventDefault();
-
+        
         const newUser = { firstName, lastName, email, password, confirmPassword };
 
         axios.post("http://localhost:8000/api/users/new", newUser,{ withCredentials: true })
@@ -23,11 +25,12 @@ const SignUp = (props) => {
             setEmail('');
             setPassword('');
             setConfirmPassword('');
+            navigate('/users');
         })
         .catch((err)=>{
             console.log(err);
-
             setErrors(err.response.data.errors);
+
         });
     };
     return (
@@ -41,8 +44,7 @@ const SignUp = (props) => {
                     {
                         errors?.firstName && (
                         <span className="error-message">{errors.firstName?.message}</span>
-                        )
-                    }
+                        )}
                 </div>
                 <div className="form-group">
                     <label htmlFor="lastName">Last Name:</label>

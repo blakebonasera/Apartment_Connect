@@ -26,7 +26,6 @@ const UserList = (props) => {
         .catch((err) => {
             console.log("not authorized");
             console.log(err.response);
-
             navigate("/");
         });
     }, []);

@@ -1,5 +1,5 @@
 const {Apartment} = require('../models/apartment.model');
-const {User} = require('../models/tenant')
+const {User} = require('../models/user')
 
 module.exports = {
     // C
