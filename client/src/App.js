@@ -4,6 +4,7 @@ import './App.css';
 import LogReg from './views/LogReg';
 import UserList from './views/UserList';
 import axios from 'axios';
+import UserDashboard from './views/UserDashboard';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       <Router>
         <LogReg setLoggedIn={()=> setIsLoggedIn(true)} path="/" />
         <UserList path="/users" />
+        <UserDashboard path="/user/dashboard" />
       </Router>
     </div>
   );
