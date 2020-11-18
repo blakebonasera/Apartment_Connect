@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Calendar from './calendar';
+import {navigate} from '@reach/router';
 
 const UserDashboard = props => {
     const [user, setUser] = useState({
@@ -22,7 +23,11 @@ const UserDashboard = props => {
                 setUser(user)
                 console.log(user)
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log("not authorized");
+                console.log(err.response);
+                navigate("/");
+            });
     }, [])
 
     return (
@@ -36,7 +41,7 @@ const UserDashboard = props => {
                 requestType === "repair" ?
                 <p className="m-2 p-5">Repair Form goes here</p>:
                 requestType === "reserve" ?
-                <Calendar path="/calendar"/>:
+                <Calendar />:
                 ""
             }
             

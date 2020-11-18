@@ -26,8 +26,6 @@ const SignUp = (props) => {
             setEmail('');
             setPassword('');
             setConfirmPassword('');
-            setLoggedIn();
-            navigate('/users');
         })
         .catch((err)=>{
             console.log(err);
