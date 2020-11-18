@@ -5,6 +5,7 @@ import LogReg from './views/LogReg';
 import UserList from './views/UserList';
 import axios from 'axios';
 import Calendar from './views/calendar';
+import UserDashboard from './views/UserDashboard';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <LogReg setLoggedIn={()=> setIsLoggedIn(true)} path="/" />
         <UserList path="/users" />
         <Calendar path="/calendar"/>
+        <UserDashboard path="/dashboard" />
       </Router>
     </div>
   );
