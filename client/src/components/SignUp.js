@@ -4,6 +4,7 @@ import axios from 'axios';
 import { navigate } from '@reach/router';
 
 const SignUp = (props) => {
+    const {setLoggedIn} = props
     const [ firstName, setFirstName ] = useState("");
     const [ lastName, setLastName ] = useState("");
     const [ email, setEmail ] = useState("");
@@ -25,11 +26,12 @@ const SignUp = (props) => {
             setEmail('');
             setPassword('');
             setConfirmPassword('');
+            setLoggedIn();
             navigate('/users');
         })
         .catch((err)=>{
             console.log(err);
-            setErrors(err.response.data.errors);
+            //setErrors(err.response.data.errors);
 
         });
     };

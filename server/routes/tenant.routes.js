@@ -10,7 +10,9 @@ module.exports = app => {
     // R
     app.get('/api/apartments', controller.allApartments);
     app.get('/api/apartments/:id', controller.oneApartment);
-    app.get('/api/users', controller.allUser);
+    
+    app.get("/api/users", authenticate, uController.allUsers);
+    app.get("/api/users/loggedin", authenticate, uController.getLoggedInUser);
     app.get('/api/users/:id', controller.oneUser);
     // U
     app.patch('/api/apartments/:id', controller.updateApartment);
@@ -26,7 +28,5 @@ module.exports = app => {
     //logout
     app.post("/api/logout", uController.logout);
     // this route now has to be authenticated
-    app.get("/api/users", authenticate, uController.allUsers);
-    app.get("/api/users/loggedin", authenticate, uController.getLoggedInUser);
 
 }
