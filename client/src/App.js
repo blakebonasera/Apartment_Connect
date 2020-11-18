@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, navigate, Router} from '@reach/router';
 import './App.css';
+import Nav from './components/Nav';
 import LogReg from './views/LogReg';
 import UserList from './views/UserList';
 import axios from 'axios';
@@ -21,9 +22,9 @@ function App() {
 
   return (
     <div className="container">
-      <div className="jumbotron">
+      <div className="jumbotron ">
         <h1>Apartment Connect</h1>
-        {isLoggedIn && <button onClick={logout}>Logout</button>}
+        {isLoggedIn && <Nav logout={logout} />}
       </div>
       <Router>
         <LogReg setLoggedIn={()=> setIsLoggedIn(true)} path="/" />
