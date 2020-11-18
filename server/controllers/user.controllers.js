@@ -48,7 +48,9 @@ module.exports = {
                     console.log('password is valid')
                     res
                       .cookie(
+                        //cookie key
                         "usertoken",
+                        //cookie value
                         jwt.sign({ _id: user._id }, process.env.JWT_SECRET),
                         {
                           httpOnly: true,

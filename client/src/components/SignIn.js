@@ -12,8 +12,9 @@ const SignIn = ({ setLoggedIn }) => {
         axios.post("http://localhost:8000/api/login", { email, password }, { withCredentials: true })
         .then((res) =>{
             console.log(res);
+            localStorage.setItem("loggedIn", "true")
             setLoggedIn();
-            navigate('/users');
+            navigate('/dashboard');
         })
         .catch((err)=>{
             console.log(err);
