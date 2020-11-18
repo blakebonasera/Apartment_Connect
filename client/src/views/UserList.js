@@ -34,7 +34,7 @@ const UserList = (props) => {
         <div className="container">
            
         <h3>All Users:</h3>
-        <button onClick={getLoggedInUser}>Get Logged In User</button>
+        <button onClick={() => getLoggedInUser}>Get Logged In User</button>
         <table>
         <tbody>
             <tr>

@@ -14,7 +14,7 @@ const SignIn = ({ setLoggedIn }) => {
             console.log(res);
             localStorage.setItem("loggedIn", "true")
             setLoggedIn();
-            navigate('/users');
+            navigate('/dashboard');
         })
         .catch((err)=>{
             console.log(err);
