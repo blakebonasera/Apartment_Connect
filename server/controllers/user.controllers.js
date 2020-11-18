@@ -43,7 +43,9 @@ module.exports = {
               bcrypt
                 .compare(req.body.password, user.password)
                 .then((passwordIsValid) => {
+                  console.log("bcrypt ran")
                   if (passwordIsValid) {
+                    console.log('password is valid')
                     res
                       .cookie(
                         "usertoken",
@@ -52,9 +54,11 @@ module.exports = {
                           httpOnly: true,
                         }
                       )
-                      .json({ msg: "success!" });
+                      .json({ msg: "success!", user: user });
+                    console.log(res.cookies)
                   } else {
                     res.status(400).json({ msg: "invalid login attempt" });
+                    console.log("invalid password")
                   }
                 })
                 .catch((err) =>
@@ -67,7 +71,8 @@ module.exports = {
     
       logout(req, res) {
         res
-          .cookie("usertoken", jwt.sign({ _id: "" }, process.env.JWT_SECRET), {
+          //jwt.sign({ _id: "" }, process.env.JWT_SECRET)
+          .cookie("usertoken", "", {
             httpOnly: true,
           })
           .json({ msg: "ok" });
@@ -79,7 +84,7 @@ module.exports = {
       },
       getLoggedInUser(req, res) {
         const decodedJWT = jwt.decode(req.cookies.usertoken, { complete: true });
-    
+        console.log(decodedJWT)
         User.findById(decodedJWT.payload._id)
           .then((user) => res.json(user))
           .catch((err) => res.json(err));
