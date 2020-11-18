@@ -1,4 +1,6 @@
 const { User } = require('../models/user');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
     // C
@@ -67,7 +69,6 @@ module.exports = {
         res
           .cookie("usertoken", jwt.sign({ _id: "" }, process.env.JWT_SECRET), {
             httpOnly: true,
-            maxAge: 0,
           })
           .json({ msg: "ok" });
       },
