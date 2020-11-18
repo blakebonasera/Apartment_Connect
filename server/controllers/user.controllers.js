@@ -72,12 +72,17 @@ module.exports = {
       },
 
       logout(req, res) {
-        res
-          .cookie("usertoken", jwt.sign({ _id: "" }, process.env.JWT_SECRET), {
-            httpOnly: true,
+        console.log("i'm logging out")
+        console.log(jwt.decode(req.cookies.usertoken, {complete: true}))
+        // res
+        //   .cookie("usertoken", jwt.sign({ _id: "" }, process.env.JWT_SECRET), {
+        //     httpOnly: true,
     
-          })
-          .json({ msg: "ok" });
+        //   })
+        //   .json({ msg: "ok" });
+        res.clearCookie("usertoken");
+        res.json({ msg: "usertoken cookie cleared" });
+        console.log(jwt.decode(res.cookies.usertoken, {complete: true}))
       },
       getLoggedInUser(req, res) {
         const decodedJWT = jwt.decode(req.cookies.usertoken, { complete: true });
