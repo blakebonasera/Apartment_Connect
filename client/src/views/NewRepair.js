@@ -29,6 +29,17 @@ const NewRepair = () => {
             .catch(err => console.log(err));
     }, [])
 
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/getapt/${user._id}`, {withCredentials: true})
+            .then(res => {
+                setUser({...user, "apartment": res.data[0]._id})
+                // console.log(`User inside nested callback: ${JSON.stringify(user)}`)
+                // console.log(`response data in second useEffect: ${JSON.stringify(res.data[0]._id)}`)
+                console.log(`The user is now equal to ${JSON.stringify(user)}`)
+            })
+            .catch(err => console.log(err));
+    }, [])
+
     const checkBoxHandler = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -52,8 +63,9 @@ const NewRepair = () => {
     const submitHandler = e => {
         console.log("inside submitHandler");
         console.log(`repair: ${JSON.stringify(repair)}`)
+        console.log(`Apartment ID: ${user.apartment}`)
         e.preventDefault();
-        axios.patch('http://localhost:8000/api/apartments/5fb569e3ce8804366293db78/repair/new', repair)
+        axios.patch(`http://localhost:8000/api/apartments/${user.apartment}/repair/new`, repair)
             .then(response => {
                 if(response.data.message) {
                     setErrors({name : response.data.message}); 
@@ -69,6 +81,7 @@ const NewRepair = () => {
     return (
         <div>
             <h2>Hello  {user.firstName}</h2>
+            <h2>Your apartment ID:  {user.apartment}</h2>
             <div className="row">
                 <div className="col-sm-8">
                     <h1>Repair Request</h1>
