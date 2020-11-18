@@ -58,7 +58,7 @@ module.exports = {
     addRepair: (req, res) => {
         console.log("inside addRepair");
         console.log(`apartment ID: ${req.params.id}`);
-        console.log(`Repair body: ${req.body}`);
+        console.log(`Repair body: ${JSON.stringify(req.body)}`);
         Apartment.findOneAndUpdate({_id: req.params.id}, {$addToSet: {repairs: req.body}}, {runValidators: true, new: true})
             .then(data => res.json({message: "success", data: data}))
             .catch(err => res.json({message: "error", errors: err}));
