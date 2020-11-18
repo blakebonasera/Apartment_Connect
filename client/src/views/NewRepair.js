@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import { Link, navigate } from '@reach/router';
 import RepairForm from '../components/RepairForm';
 import axios from 'axios';
@@ -13,6 +13,21 @@ const NewRepair = () => {
     const [errors, setErrors] = useState({
         name: ""
     })
+    const [user, setUser] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+    })
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/users/loggedin`, {withCredentials: true})
+            .then(res => {
+                let user = res.data;
+                setUser(user)
+                console.log(user)
+                console.log(`User ID: ${user._id}`)
+            })
+            .catch(err => console.log(err));
+    }, [])
 
     const checkBoxHandler = (event) => {
         const target = event.target;
@@ -53,6 +68,7 @@ const NewRepair = () => {
     
     return (
         <div>
+            <h2>Hello  {user.firstName}</h2>
             <div className="row">
                 <div className="col-sm-8">
                     <h1>Repair Request</h1>
