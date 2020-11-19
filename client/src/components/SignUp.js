@@ -10,12 +10,13 @@ const SignUp = (props) => {
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ confirmPassword, setConfirmPassword ] = useState("");
+    const [ maintenance, setMaintenance ] = useState(false);
     const [ errors, setErrors ] = useState(null);
 
     const register = e => {
         e.preventDefault();
         
-        const newUser = { firstName, lastName, email, password, confirmPassword };
+        const newUser = { firstName, lastName, email, password, confirmPassword, maintenance };
 
         axios.post("http://localhost:8000/api/users/new", newUser,{ withCredentials: true })
         .then((res)=>{
@@ -26,8 +27,7 @@ const SignUp = (props) => {
             setEmail('');
             setPassword('');
             setConfirmPassword('');
-            setLoggedIn();
-            navigate('/users');
+            setMaintenance();
         })
         .catch((err)=>{
             console.log(err);
@@ -83,6 +83,13 @@ const SignUp = (props) => {
                         <span className="error-message">{errors.confirmPassword?.message}</span>
                         )
                     }
+                </div>
+                <div className="form-group">
+                    <label htmlFor="maintenance">Maintenance?</label>
+                    <select name="maintenance" onChange={(e)=> setMaintenance(e.target.value)} value={maintenance} >
+                        <option value={true}>Yes</option>
+                        <option value={false}>No</option>
+                    </select>
                 </div>
                 <div className="form-group">
                 <input type="submit" value="Sign Up" className="btn btn-success" />

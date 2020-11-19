@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Calendar from './calendar';
+import NewRepair from './NewRepair';
+
+
+import {navigate} from '@reach/router';
 
 const UserDashboard = props => {
     const [user, setUser] = useState({
         firstName: '',
         lastName: '',
-        email: '',
+        email: ''
     })
     const [requestType, setRequestType] = useState("")
 
@@ -22,27 +26,40 @@ const UserDashboard = props => {
                 setUser(user)
                 console.log(user)
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log("not authorized");
+                console.log(err.response);
+                navigate("/");
+            });
     }, [])
 
     return (
-        <div>
+        <div className="container">
+            <div className="row offset-4">
             <h2>Welcome {user.firstName}</h2>
-            <div className="mt-4">
-                <button className="btn btn-primary mr-5" onClick={() => request("repair") }>Request a Repair</button>
-                <button className="btn btn-primary" onClick={() => request("reserve")}>Reserve a Time</button>
             </div>
+            <div className="row offset-3">
+                <div className="col-4">
+                <button className="btn btn-primary mr-5" onClick={() => request("repair") }>Repairs</button>
+                </div>
+                
+                <div className="col-4">
+                <button className="btn btn-primary" onClick={() => request("reserve")}>Reserve a Time</button>
+                </div>
+            </div>
+            <br/>
+            
             {
                 requestType === "repair" ?
-                <p className="m-2 p-5">Repair Form goes here</p>:
+                <NewRepair user={user} setUser={setUser} />
+                :
                 requestType === "reserve" ?
-                <Calendar path="/calendar"/>:
+                <Calendar />:
                 ""
             }
             
-            <div>
-                <h3>Future chat page???</h3>
-            </div>
+            
+           
         </div>
     )
 }
