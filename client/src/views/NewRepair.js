@@ -63,7 +63,7 @@ const NewRepair = () => {
         e.preventDefault();
         axios.patch(`http://localhost:8000/api/apartments/${user.apartment}/repair/new`, repair)
             .then(response => {
-                if(response.data.message) {
+                if(response.data.message == "error" ) {
                     setErrors({name : response.data.message}); 
                 } else {
                     navigate("/dashboard");
