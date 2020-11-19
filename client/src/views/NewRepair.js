@@ -35,7 +35,7 @@ const NewRepair = props => {
                 console.log(resp);
                 setUser((currentUser) => ({ ...currentUser, 
                     "apartment": resp.data[0].name,
-                    "apartment._id": resp.data[0]._id 
+                    "apartmentId": resp.data[0]._id 
                 }));
                 // console.log(`User inside nested callback: ${JSON.stringify(user)}`)
                 // console.log(`response data in second useEffect: ${JSON.stringify(res.data[0]._id)}`)
@@ -103,9 +103,9 @@ const NewRepair = props => {
     const submitHandler = e => {
         console.log("inside submitHandler");
         console.log(`repair: ${JSON.stringify(repair)}`)
-        console.log(`Apartment ID: ${user.apartment}`)
+        console.log(`Apartment ID: ${user.apartmentId}`)
         e.preventDefault();
-        axios.patch(`http://localhost:8000/api/apartments/${user.apartment._id}/repair/new`, repair)
+        axios.patch(`http://localhost:8000/api/apartments/${user.apartmentId}/repair/new`, repair)
             .then(response => {
                 if(response.data.message == "error" ) {
                     setErrors({name : response.data.message}); 
@@ -127,7 +127,6 @@ const NewRepair = props => {
                 <div className="col-sm-8 offset-sm-3">
                     <h1>Repair Request</h1>
                 </div>
-                
             </div>
             <div className="row">
                 <RepairForm 
