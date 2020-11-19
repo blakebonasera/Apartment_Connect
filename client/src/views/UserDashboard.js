@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Calendar from './calendar';
+import NewRepair from './NewRepair';
 
 
 import {navigate} from '@reach/router';
@@ -9,7 +10,7 @@ const UserDashboard = props => {
     const [user, setUser] = useState({
         firstName: '',
         lastName: '',
-        email: '',
+        email: ''
     })
     const [requestType, setRequestType] = useState("")
 
@@ -44,7 +45,7 @@ const UserDashboard = props => {
             
             {
                 requestType === "repair" ?
-                <p>Repairs table will go here</p>
+                <NewRepair user={user} setUser={setUser} />
                 :
                 requestType === "reserve" ?
                 <Calendar />:

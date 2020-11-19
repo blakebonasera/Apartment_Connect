@@ -23,7 +23,11 @@ function App() {
     navigate('/');
   };
 
-  useEffect(() => {}, [isLoggedIn])
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("loggedIn"))){
+      navigate('/dashboard')
+    }
+  }, [])
 
   return (
     <div className="container">
