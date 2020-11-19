@@ -8,7 +8,7 @@ module.exports = app => {
     app.post('/api/apartments/new', controller.createApartment);
     app.post('/api/users/new', controller.createUser);
     // R
-    app.get('/api/apartments', authenticate, controller.allApartments);
+    app.get('/api/apartments',  controller.allApartments);
     app.get('/api/apartments/:id', authenticate, controller.oneApartment);
     
     app.get("/api/users", authenticate, uController.allUsers);
@@ -16,7 +16,7 @@ module.exports = app => {
     app.get('/api/users/:id', authenticate, controller.oneUser);
     // U
     app.patch('/api/apartments/:id', authenticate, controller.updateApartment);
-    app.patch('/api/apartments/:id/tenants/new', authenticate, controller.addTenant);
+    app.patch('/api/apartments/:id/tenants/new',  controller.addTenant);
     app.patch('/api/apartments/:id/repair/new', authenticate, controller.addRepair);
     app.patch('/api/apartments/:id/repair/update', authenticate, controller.updateRepairStatus);
     app.patch('/api/users/:id', authenticate, controller.updateUser);
