@@ -130,6 +130,7 @@ const NewRepair = props => {
                     <h1>Repair Request</h1>
                 </div>
             </div>
+            <br/>
             <div className="row">
                 {
                     user.apartment ?
