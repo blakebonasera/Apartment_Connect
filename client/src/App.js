@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import LogReg from './views/LogReg';
 import UserList from './views/UserList';
 import axios from 'axios';
+import ApartmentForm from './components/ApartmentForm';
 import UserDashboard from './views/UserDashboard';
 import NewRepair from './views/NewRepair';
 import Calendar from './views/calendar';
@@ -22,7 +23,11 @@ function App() {
     navigate('/');
   };
 
-  useEffect(() => {}, [isLoggedIn])
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("loggedIn"))){
+      navigate('/dashboard')
+    }
+  }, [])
 
   return (
     <div className="container">
@@ -34,6 +39,7 @@ function App() {
         <LogReg setLoggedIn={()=> setIsLoggedIn(true)} path="/" />
         <UserList path="/users" />
         <UserDashboard path="/dashboard" />
+        <ApartmentForm path='/connect' />
         <NewRepair path="/newrepair" />
         <Calendar path="/calendar" />
       </Router>

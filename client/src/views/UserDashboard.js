@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Calendar from './calendar';
-import ApartmentForm from '../components/ApartmentForm';
 import NewRepair from './NewRepair';
+
+
 import {navigate} from '@reach/router';
 
 const UserDashboard = props => {
     const [user, setUser] = useState({
         firstName: '',
         lastName: '',
-        email: '',
+        email: ''
     })
     const [requestType, setRequestType] = useState("")
 
@@ -38,13 +39,14 @@ const UserDashboard = props => {
             <h2>Welcome {user.firstName}</h2>
             </div>
             <div className="row offset-3">
-                <button className="btn btn-primary mr-5" onClick={() => request("connect") }>Apartment Connect</button>
+                <button className="btn btn-primary mr-5" onClick={() => request("repair") }>Repairs</button>
                 <button className="btn btn-primary" onClick={() => request("reserve")}>Reserve a Time</button>
             </div>
             
             {
-                requestType === "connect" ?
-                <ApartmentForm />:
+                requestType === "repair" ?
+                <NewRepair user={user} setUser={setUser} />
+                :
                 requestType === "reserve" ?
                 <Calendar />:
                 ""
