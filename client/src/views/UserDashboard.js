@@ -75,10 +75,15 @@ const UserDashboard = props => {
                 userApt.repairs ?
                 userApt.repairs.map((repair, i) => {
                     return (
-                        <div key={i}>
-                            <h3>{repair.details}</h3>
-                            <p>{repair.location}</p>
-                            <p>{repair.urgency}</p>
+                        <div key={i} >
+                        <div class="card mb-3" >
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-dark text-danger">{repair.details}</li>
+                                <li class="list-group-item bg-dark">{repair.location}</li>
+                                <li class="list-group-item bg-dark">{repair.urgency}</li>
+                                
+                            </ul>
+                        </div>
                         </div>
                     )
                 }):
