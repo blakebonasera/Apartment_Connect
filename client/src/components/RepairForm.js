@@ -28,9 +28,9 @@ const RepairForm = props => {
                 <div className="form-group">
                 <label htmlFor="urgency" className="col-sm-4">How urgent is this? 
                 <select name="urgency" onChange={changeHandler} value={repair.urgency}>
-                    <option value="1">Anytime is fine</option>
-                    <option value="2">Today would be good</option>
-                    <option value="3">Stuff is on fire!!!</option>
+                    <option value={1}>Anytime is fine</option>
+                    <option value={2}>Today would be good</option>
+                    <option value={3}>Stuff is on fire!!!</option>
                 </select>
                 </label>
             </div>

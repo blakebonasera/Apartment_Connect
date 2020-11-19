@@ -8,7 +8,6 @@ const NewRepair = () => {
         location: "",
         details: "",
         urgency: "",
-        status: "",
     });
     const [errors, setErrors] = useState({
         name: ""
@@ -25,12 +24,8 @@ const NewRepair = () => {
                 setUser(user)
                 console.log(user)
                 console.log(`User ID: ${user._id}`)
+                return axios.get(`http://localhost:8000/api/getapt/${user._id}`, {withCredentials: true})
             })
-            .catch(err => console.log(err));
-    }, [])
-
-    useEffect(() => {
-        axios.get(`http://localhost:8000/api/getapt/${user._id}`, {withCredentials: true})
             .then(res => {
                 setUser({...user, "apartment": res.data[0]._id})
                 // console.log(`User inside nested callback: ${JSON.stringify(user)}`)
@@ -39,6 +34,7 @@ const NewRepair = () => {
             })
             .catch(err => console.log(err));
     }, [])
+
 
     const checkBoxHandler = (event) => {
         const target = event.target;
