@@ -122,13 +122,12 @@ const NewRepair = props => {
     
     return (
         <div>
-            <h2>Hello  {user.firstName}</h2>
-            {user.apartmentId ? <h2>Apartment: {user.apartment}</h2>: ""}
+                <div className="col-sm-8 offset-3">
+            <h2>Hello  {user.firstName}  {user.apartmentId ? <span>Apartment: {user.apartment}</span>: ""}</h2>
+                    <h1 className="offset-sm-1">Repair Request</h1>
+                </div>
             <div className="container offset-1">
             <div className="row">
-                <div className="col-sm-8 offset-sm-3">
-                    <h1>Repair Request</h1>
-                </div>
             </div>
             <br/>
             <div className="row">
@@ -143,9 +142,9 @@ const NewRepair = props => {
                     action="Create a Repair Request"
                     />:
                     (
-                        <div>    
+                        <div className="offset-2">    
                         <p>Please add an apartment before requesting a repair.</p>
-                        <button className="btn btn-primary" onClick={() => navigate('/connect')}>Add Apartment</button>
+                        <button className="btn btn-primary offset-4" onClick={() => navigate('/connect')}>Add Apartment</button>
                         </div>
                     )
                 }

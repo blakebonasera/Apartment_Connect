@@ -33,7 +33,7 @@ function App() {
     <div className="container">
       
       <div className="jumbotron-dark">
-        <h1 className="offset-sm-3">Apartment Connect</h1>
+        <h1 className="offset-3">Apartment Connect</h1>
         {JSON.parse(localStorage.getItem("loggedIn")) && <Nav logout={logout} />}
       
       </div>
