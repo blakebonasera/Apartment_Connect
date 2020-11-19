@@ -15,6 +15,9 @@ const Nav = (props) => {
                         <Link className="btn" to="/calendar">Resources Calendar</Link>
                     </li>
                     <li className="nav-item">
+                        <Link className="btn" to="/connect">Claim your Apartment</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="btn" to="/newrepair">Request Repair</Link>
                     </li>
                     <li className="nav-item">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect }from 'react';
+import { navigate } from '@reach/router';
 import axios from 'axios';
 
 const ApartmentForm = props => {
@@ -47,11 +48,14 @@ const ApartmentForm = props => {
             }
         })
         .catch(err=>console.log(err));
+        navigate('/calendar');
     }
 
     return(
+        
         <form onSubmit={submitHandler}>
-            <div className="row form-group">
+            <legend className="offset-1">Claim your apartment for ability to request repairs and reserve common areas</legend>
+            <div className="row form-group offset-3">
                 <label htmlFor="apartments">Apartment :</label>
                 <select name="apartments" onChange={changeHandler}  >
                     <option>Select your apartment</option>
@@ -62,7 +66,7 @@ const ApartmentForm = props => {
                     }
                 </select>
             </div>
-            <div className="row form-group">
+            <div className="row form- offset-4">
                 <input type="submit" value="Add User as Tenant" className="btn btn-primary"/>
             </div>
         </form>
