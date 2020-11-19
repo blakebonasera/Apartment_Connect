@@ -20,7 +20,7 @@ const RepairSchema = new mongoose.Schema({
     },
     status: {
         type: Boolean,
-        default: true
+        default: false
     }
 }, { timestamps: true });
 
