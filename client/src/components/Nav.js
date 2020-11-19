@@ -7,7 +7,7 @@ const Nav = (props) => {
     
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-primary">
+        <nav className="navbar navbar-expand-lg navbar-primary offset-sm-1">
             <Link className="btn" to='/dashboard'>Apartment Connect</Link>
             <div className="" id="navbarNav">
                 <ul className="navbar-nav">
