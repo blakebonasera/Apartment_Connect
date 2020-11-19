@@ -33,7 +33,7 @@ const NewRepair = props => {
             .then(resp => {
                 console.log('res');
                 console.log(resp);
-                if (resp.data == []){
+                if (resp.data[0].name ){
                     setUser((currentUser) => ({ ...currentUser, 
                         "apartment": resp.data[0].name,
                         "apartmentId": resp.data[0]._id 
@@ -123,7 +123,7 @@ const NewRepair = props => {
     return (
         <div>
             <h2>Hello  {user.firstName}</h2>
-            {user.apartment ? <h2>Apartment: {user.apartment}</h2>: ""}
+            {user.apartmentId ? <h2>Apartment: {user.apartment}</h2>: ""}
             <div className="container offset-1">
             <div className="row">
                 <div className="col-sm-8 offset-sm-3">
