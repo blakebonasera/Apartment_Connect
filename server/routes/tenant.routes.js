@@ -13,7 +13,7 @@ module.exports = app => {
     app.get('/api/getapt/:id', controller.getLoggedInUserApartment);
     
     app.get("/api/users", authenticate, uController.allUsers);
-    app.get("/api/users/loggedin", authenticate, uController.getLoggedInUser);
+    app.get("/api/users/loggedin", uController.getLoggedInUser);
     app.get('/api/users/:id', authenticate, controller.oneUser);
     // U
     app.patch('/api/apartments/:id', authenticate, controller.updateApartment);
