@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from 'react'
-import { Link, navigate } from '@reach/router';
+import { navigate } from '@reach/router';
 import RepairForm from '../components/RepairForm';
 import axios from 'axios';
 
@@ -33,13 +33,15 @@ const NewRepair = props => {
             .then(resp => {
                 console.log('res');
                 console.log(resp);
-                setUser((currentUser) => ({ ...currentUser, 
-                    "apartment": resp.data[0].name,
-                    "apartmentId": resp.data[0]._id 
-                }));
+                if (resp.data == []){
+                    setUser((currentUser) => ({ ...currentUser, 
+                        "apartment": resp.data[0].name,
+                        "apartmentId": resp.data[0]._id 
+                    }));
+                }
                 // console.log(`User inside nested callback: ${JSON.stringify(user)}`)
                 // console.log(`response data in second useEffect: ${JSON.stringify(res.data[0]._id)}`)
-                console.log(`The user is now equal to ${JSON.stringify(user)}`)
+                // console.log(`The user is now equal to ${JSON.stringify(user)}`)
             })
             .catch(err => console.log(err));
         // const getUsersAndApartment = async () => {
@@ -120,10 +122,8 @@ const NewRepair = props => {
     
     return (
         <div>
-            <div className="row offset-3">
-            <h2>Hello  {user.firstName} in Apartment:  {user.apartment}</h2>
-            
-            </div>
+            <h2>Hello  {user.firstName}</h2>
+            {user.apartment ? <h2>Apartment: {user.apartment}</h2>: ""}
             <div className="container offset-1">
             <div className="row">
                 <div className="col-sm-8 offset-sm-3">
@@ -132,14 +132,23 @@ const NewRepair = props => {
             </div>
             <br/>
             <div className="row">
-                <RepairForm 
+                {
+                    user.apartment ?
+                    <RepairForm 
                     changeHandler={ changeHandler }
                     submitHandler={ submitHandler }
                     checkBoxHandler={checkBoxHandler}
                     repair={ repair }
                     errors={ errors }
                     action="Create a Repair Request"
-                />
+                    />:
+                    (
+                        <div>    
+                        <p>Please add an apartment before requesting a repair.</p>
+                        <button className="btn btn-primary" onClick={() => navigate('/connect')}>Add Apartment</button>
+                        </div>
+                    )
+                }
             </div>
             
         </div>
