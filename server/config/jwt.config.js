@@ -2,8 +2,8 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
   authenticate(req, res, next) {
-    console.log("authenticate is running")
-    console.log(req.cookies.usertoken);
+    // console.log("authenticate is running")
+    // console.log(req.cookies.usertoken);
     jwt.verify(
       //user token
       req.cookies.usertoken,

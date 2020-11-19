@@ -1,5 +1,6 @@
 import React, { useState, useEffect }from 'react';
 import axios from 'axios';
+import {mergeSortArrObj} from '@hdanks/mern-library'
 
 const ApartmentForm = props => {
     const [ apartments, setApartments ] =useState([]);
@@ -14,9 +15,8 @@ const ApartmentForm = props => {
 
     useEffect(()=>{
         axios.get("http://localhost:8000/api/apartments")
-        .then(response=>{ 
-            let availableApartments = response.data.filter(item => item.tenants === "")
-            setApartments(availableApartments)
+        .then(response=>{
+            setApartments(mergeSortArrObj(response.data.filter(item => item.tenants === ""), "name"))
             console.log(response.data._id);
         })
         .catch(err=>console.log(err));
@@ -58,9 +58,7 @@ const ApartmentForm = props => {
                 <select name="apartments" onChange={changeHandler}  >
                     <option>Select your apartment</option>
                     {
-                        apartments
-                        .sort((a,b)=>(a.name > b.name)? 1:-1)
-                        .map((item,i)=> <option value={item._id} key={i}>{item.name}</option>)
+                        apartments.map((item,i)=> <option value={item._id} key={i}>{item.name}</option>)
                     }
                 </select>
             </div>

@@ -26,11 +26,11 @@ const SignUp = (props) => {
             setEmail('');
             setPassword('');
             setConfirmPassword('');
+            navigate('/');
         })
         .catch((err)=>{
             console.log(err);
             setErrors(err.response.data.errors);
-
         });
     };
     return (

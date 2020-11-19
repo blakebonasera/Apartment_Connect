@@ -12,7 +12,9 @@ module.exports = {
     },
     createUser: (req, res) => {
         User.create(req.body)
-            .then(data => res.json(data))
+            .then(data => {
+                res.json(data)
+            })
             .catch(err => res.json(err));
     },
     // R
