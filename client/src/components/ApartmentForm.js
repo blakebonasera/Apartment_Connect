@@ -15,7 +15,9 @@ const ApartmentForm = props => {
 
     useEffect(()=>{
         axios.get("http://localhost:8000/api/apartments")
-        .then(response=>{ setApartments(response.data)
+        .then(response=>{ 
+            let availableApartments = response.data.filter(item => item.tenants === "")
+            setApartments(availableApartments)
             console.log(response.data._id);
         })
         .catch(err=>console.log(err));
