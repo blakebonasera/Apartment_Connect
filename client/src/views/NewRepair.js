@@ -18,25 +18,65 @@ const NewRepair = props => {
         email: '',
     })
     useEffect(() => {
+        let testUser;
+        console.log('running use effect');
         axios.get(`http://localhost:8000/api/users/loggedin`, {withCredentials: true})
             .then(res => {
-                let user = res.data;
-                setUser(user)
-                console.log(user)
-                console.log(`User ID: ${user._id}`)
-                return axios.get(`http://localhost:8000/api/getapt/${user._id}`, {withCredentials: true})
+                console.log('first then');
+                setUser(res.data)
+                testUser = res.data;
+                console.log(`User Object ${JSON.stringify(testUser)}`)
+                console.log(`User ID: ${testUser._id}`)
+
+                return axios.get(`http://localhost:8000/api/getapt/${res.data._id}`, {withCredentials: true})
             })
-            .then(res => {
-                setUser({
-                    ...user,
+            .then(resp => {
+                console.log('resp');
+                console.log(resp);
+                setUser((currentUser) => ({ ...currentUser, 
                     "apartment": res.data[0].name,
-                    "apartment._id": res.data[0]._id
-                })
+                    "apartment._id": res.data[0]._id 
+                }));
                 // console.log(`User inside nested callback: ${JSON.stringify(user)}`)
                 // console.log(`response data in second useEffect: ${JSON.stringify(res.data[0]._id)}`)
                 console.log(`The user is now equal to ${JSON.stringify(user)}`)
             })
             .catch(err => console.log(err));
+        // const getUsersAndApartment = async () => {
+        //     try {
+        //         const res = await fetch('http://localhost:8000/api/users/loggedin', {
+        //             method: 'GET',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //             },
+        //             credentials: "same-origin"
+        //         });
+
+        //         console.log('res');
+        //         console.log(res);
+
+        //         const user = res.data;
+
+        //         const response = fetch(`http://localhost:8000/api/getapt/${user._id}`, {
+        //             method: 'GET',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //             },
+        //             credentials: "same-origin"
+        //         });
+
+        //         console.log('response');
+        //         console.log(response);
+
+        //         setUser({ ...user, apartment: response.data[0]._id });
+
+
+        //     } catch (err) {
+        //         console.log(err);
+        //     }
+        // }
+
+        // getUsersAndApartment()
     }, [])
 
 

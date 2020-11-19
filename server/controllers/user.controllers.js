@@ -85,10 +85,16 @@ module.exports = {
         console.log(jwt.decode(res.cookies.usertoken, {complete: true}))
       },
       getLoggedInUser(req, res) {
+        console.log(req.cookies);
         const decodedJWT = jwt.decode(req.cookies.usertoken, { complete: true });
-        console.log(decodedJWT)
+        console.log('decodedJWT');
+        console.log(decodedJWT);
         User.findById(decodedJWT.payload._id)
-          .then((user) => res.json(user))
+          .then((user) => {
+            console.log('user');
+            console.log(user);
+            return res.json(user)
+          })
           .catch((err) => res.json(err));
       },
     
