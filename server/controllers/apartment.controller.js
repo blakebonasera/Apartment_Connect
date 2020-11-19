@@ -21,6 +21,12 @@ module.exports = {
             .then(data => res.json(data))
             .catch(err => res.json(err));
     },
+    getLoggedInUserApartment: (req,res) => {
+        console.log(`Request params ${req.params.id}`)
+        Apartment.find({tenants: req.params.id})
+            .then(data => res.json(data))
+            .catch(err => res.json(err));
+    },
     oneApartment: (req,res) => {
         Apartment.findOne({ _id: req.params.id })
             .then(data => res.json(data))
@@ -48,7 +54,7 @@ module.exports = {
             .catch(err => res.json(err))
     },
     addTenant: (req, res) => {
-        console.log(req.body.id)
+        console.log(`Request Body${JSON.stringify(req.body)}`)
         Apartment.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}) //pass back {_id: user._id}
             .then(data => {
                 res.json({message: "success", data: data})
