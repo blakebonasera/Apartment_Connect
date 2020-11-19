@@ -10,6 +10,7 @@ module.exports = app => {
     // R
     app.get('/api/apartments',  controller.allApartments);
     app.get('/api/apartments/:id', authenticate, controller.oneApartment);
+    app.get('/api/getapt/:id', controller.getLoggedInUserApartment);
     
     app.get("/api/users", authenticate, uController.allUsers);
     app.get("/api/users/loggedin", authenticate, uController.getLoggedInUser);
@@ -18,6 +19,8 @@ module.exports = app => {
     app.patch('/api/apartments/:id', authenticate, controller.updateApartment);
     app.patch('/api/apartments/:id/tenants/new',  controller.addTenant);
     app.patch('/api/apartments/:id/repair/new', authenticate, controller.addRepair);
+    app.patch('/api/apartments/:id/tenants/new', controller.addTenant);
+    app.patch('/api/apartments/:id/repair/new', controller.addRepair);
     app.patch('/api/apartments/:id/repair/update', authenticate, controller.updateRepairStatus);
     app.patch('/api/users/:id', authenticate, controller.updateUser);
     app.patch('/api/apartments/:id/tenants/remove', authenticate, controller.removeTenant);

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Calendar from './calendar';
 import ApartmentForm from '../components/ApartmentForm';
+import NewRepair from './NewRepair';
+import {navigate} from '@reach/router';
 
 const UserDashboard = props => {
     const [user, setUser] = useState({
@@ -23,7 +25,11 @@ const UserDashboard = props => {
                 setUser(user)
                 console.log(user)
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log("not authorized");
+                console.log(err.response);
+                navigate("/");
+            });
     }, [])
 
     return (
@@ -40,7 +46,7 @@ const UserDashboard = props => {
                 requestType === "connect" ?
                 <ApartmentForm />:
                 requestType === "reserve" ?
-                <Calendar path="/calendar"/>:
+                <Calendar />:
                 ""
             }
             
