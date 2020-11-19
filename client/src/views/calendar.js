@@ -3,7 +3,7 @@ import { InlineWidget } from "react-calendly";
 const Calendar = props => {
     return(
         <div className="container">
-            <div className="row offset-5">
+            <div className="row offset-4">
                 <h2>Book an Area</h2>
             </div>
         <div id ="calendar_container">

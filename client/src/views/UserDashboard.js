@@ -39,9 +39,15 @@ const UserDashboard = props => {
             <h2>Welcome {user.firstName}</h2>
             </div>
             <div className="row offset-3">
+                <div className="col-4">
                 <button className="btn btn-primary mr-5" onClick={() => request("repair") }>Repairs</button>
+                </div>
+                
+                <div className="col-4">
                 <button className="btn btn-primary" onClick={() => request("reserve")}>Reserve a Time</button>
+                </div>
             </div>
+            <br/>
             
             {
                 requestType === "repair" ?
@@ -53,9 +59,7 @@ const UserDashboard = props => {
             }
             
             
-            <div>
-                <h3>Future chat page???</h3>
-            </div>
+           
         </div>
     )
 }
