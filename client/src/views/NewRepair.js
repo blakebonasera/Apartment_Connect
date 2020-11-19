@@ -82,7 +82,7 @@ const NewRepair = () => {
         <div>
             <h2>Hello  {user.firstName}</h2>
             <h2>Your apartment ID:  {user.apartment}</h2>
-        <div className="container offset-1">
+            <div className="container offset-1">
             <div className="row">
                 <div className="col-sm-8 offset-sm-3">
                     <h1>Repair Request</h1>
@@ -100,6 +100,7 @@ const NewRepair = () => {
                 />
             </div>
             
+        </div>
         </div>
     )
 }
