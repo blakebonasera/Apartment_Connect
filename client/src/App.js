@@ -41,7 +41,7 @@ function App() {
       <Router>
         <LogReg setLoggedIn={()=> setIsLoggedIn(true)} path="/" />
         <UserList path="/users" />
-        <UserDashboard path="/dashboard" />
+        <UserDashboard logout={logout} path="/dashboard" />
         <ApartmentForm path='/connect' />
         <NewRepair path="/newrepair" />
         <Calendar path="/calendar" />

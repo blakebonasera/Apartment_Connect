@@ -12,7 +12,7 @@ module.exports = app => {
     app.get('/api/apartments/:id', authenticate, controller.oneApartment);
     app.get('/api/getapt/:id', controller.getLoggedInUserApartment);
     
-    app.get("/api/users", authenticate, uController.allUsers);
+    app.get("/api/users", uController.allUsers);
     app.get("/api/users/loggedin", uController.getLoggedInUser);
     app.get('/api/users/:id', authenticate, controller.oneUser);
     // U

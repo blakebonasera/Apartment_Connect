@@ -82,7 +82,7 @@ module.exports = {
         //   .json({ msg: "ok" });
         res.clearCookie("usertoken");
         res.json({ msg: "usertoken cookie cleared" });
-        console.log(jwt.decode(res.cookies.usertoken, {complete: true}))
+        console.log(jwt.decode(res.cookies, {complete: true}))
       },
       getLoggedInUser(req, res) {
         console.log(req.cookies);

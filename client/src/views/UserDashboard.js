@@ -5,11 +5,12 @@ import NewRepair from './NewRepair';
 import {navigate} from '@reach/router';
 import {mergeSortArrObj} from '@hdanks/mern-library';
 
-const UserDashboard = props => {
+const UserDashboard = ({logout}) => {
     const [user, setUser] = useState({
         firstName: '',
         lastName: '',
-        email: ''
+        email: '',
+        maintenance: ''
     })
     const [userApt, setUserApt] = useState({
 
@@ -27,10 +28,13 @@ const UserDashboard = props => {
                 let user = res.data;
                 setUser(user)
                 console.log(user)
+                // if(res.data.maintenance) {
+                //     return (axios.get("http://localhost:8000/api/apartments", {withCredentials: true}), axios.get(`http://localhost:8000/api/getapt/${res.data._id}`))
+                // }
                 return axios.get(`http://localhost:8000/api/getapt/${res.data._id}`, {withCredentials: true})
             })
             .then(response => {
-                if (response.data[0].name){
+                if (response.data[0]){
                     let sortedRepairs = mergeSortArrObj(response.data[0].repairs.filter(repair => repair.status === false), "urgency").reverse()
                     console.log("sorted Repairs: ", sortedRepairs)
                     setUserApt({
@@ -42,8 +46,9 @@ const UserDashboard = props => {
             })
             .catch(err => {
                 console.log("not authorized");
-                console.log(err.response);
+                console.log("error" ,err);
                 navigate("/");
+                logout()
             });
     }, [])
 
