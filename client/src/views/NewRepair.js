@@ -31,11 +31,11 @@ const NewRepair = props => {
                 return axios.get(`http://localhost:8000/api/getapt/${res.data._id}`, {withCredentials: true})
             })
             .then(resp => {
-                console.log('resp');
+                console.log('res');
                 console.log(resp);
                 setUser((currentUser) => ({ ...currentUser, 
-                    "apartment": res.data[0].name,
-                    "apartment._id": res.data[0]._id 
+                    "apartment": resp.data[0].name,
+                    "apartment._id": resp.data[0]._id 
                 }));
                 // console.log(`User inside nested callback: ${JSON.stringify(user)}`)
                 // console.log(`response data in second useEffect: ${JSON.stringify(res.data[0]._id)}`)
