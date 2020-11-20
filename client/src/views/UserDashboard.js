@@ -99,7 +99,7 @@ const UserDashboard = ({logout}) => {
             }
             {
                 user.maintenance ?
-                <Link to="/maintenance">go to maintenance</Link>:
+                <button className="btn btn-primary" onClick={()=> navigate('/maintenance')}>View open Repairs</button>:
                 ""
             }
         </div>
