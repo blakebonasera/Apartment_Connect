@@ -10,6 +10,7 @@ import UserDashboard from './views/UserDashboard';
 import NewRepair from './views/NewRepair';
 import Calendar from './views/calendar';
 import RepairList from './views/RepairList';
+import RepairsMaintenance from './views/RepairsMaintenance';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn ] = useState(JSON.parse(localStorage.getItem("loggedIn")));
@@ -47,6 +48,7 @@ function App() {
         <NewRepair path="/newrepair" />
         <Calendar path="/calendar" />
         <RepairList path="/repairlist" />
+        <RepairsMaintenance path="/maintenance" />
       </Router>
     </div>
   );

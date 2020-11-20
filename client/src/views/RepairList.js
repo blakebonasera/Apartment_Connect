@@ -23,7 +23,6 @@ const RepairList = props => {
                 testUser = res.data;
                 console.log(`User Object ${JSON.stringify(testUser)}`)
                 console.log(`User ID: ${testUser._id}`)
-
                 return axios.get(`http://localhost:8000/api/getapt/${res.data._id}`, {withCredentials: true})
             })
             .then(resp => {
@@ -78,7 +77,7 @@ const RepairList = props => {
                     :
                     (
                         <div>    
-                        <p>Please add an apartment before requesting a repair.</p>
+                        <p>Please add an apartment to view repairs.</p>
                         <button className="btn btn-primary" onClick={() => navigate('/connect')}>Add Apartment</button>
                         </div>
                     )
