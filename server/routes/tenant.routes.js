@@ -9,7 +9,7 @@ module.exports = app => {
     app.post('/api/users/new', controller.createUser);
     // R
     app.get('/api/apartments',  controller.allApartments);
-    app.get('/api/apartments/:id', authenticate, controller.oneApartment);
+    app.get('/api/apartments/:id', controller.oneApartment);
     app.get('/api/getapt/:id', controller.getLoggedInUserApartment);
     
     app.get("/api/users", uController.allUsers);

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Calendar from './calendar';
 import NewRepair from './NewRepair';
+import RepairList from './RepairList';
+
+
 import {navigate} from '@reach/router';
 import {mergeSortArrObj} from '@hdanks/mern-library';
 
@@ -61,7 +64,11 @@ const UserDashboard = ({logout}) => {
                 <div className="col-4">
                 <button className="btn btn-primary mr-5" onClick={() => request("repair") }>Repairs</button>
                 </div>
-                
+
+                <div className="col-4">
+                <button className="btn btn-primary mr-5" onClick={() => request("listrepairs") }>List Repairs</button>
+                </div>
+
                 <div className="col-4">
                 <button className="btn btn-primary" onClick={() => request("reserve")}>Reserve a Time</button>
                 </div>
@@ -71,6 +78,9 @@ const UserDashboard = ({logout}) => {
             {
                 requestType === "repair" ?
                 <NewRepair user={user} setUser={setUser} />
+                :
+                requestType === "listrepairs" ?
+                <RepairList user={user} setUser={setUser} />
                 :
                 requestType === "reserve" ?
                 <Calendar />:

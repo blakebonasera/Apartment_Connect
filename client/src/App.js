@@ -9,6 +9,7 @@ import ApartmentForm from './components/ApartmentForm';
 import UserDashboard from './views/UserDashboard';
 import NewRepair from './views/NewRepair';
 import Calendar from './views/calendar';
+import RepairList from './views/RepairList';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn ] = useState(JSON.parse(localStorage.getItem("loggedIn")));
@@ -45,6 +46,7 @@ function App() {
         <ApartmentForm path='/connect' />
         <NewRepair path="/newrepair" />
         <Calendar path="/calendar" />
+        <RepairList path="/repairlist" />
       </Router>
     </div>
   );
