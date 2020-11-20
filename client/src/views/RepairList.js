@@ -63,8 +63,8 @@ const RepairList = props => {
                     (
                     <> 
                     {repairList.map((item, i) => 
-                        <div key={i} >
-                            <div class="card mb-3" >
+                        <div key={i} className="col-10" >
+                            <div className="card" >
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item bg-dark text-danger">{item.details}</li>
                                     <li class="list-group-item bg-dark">{item.location}</li>
