@@ -11,7 +11,7 @@ const SignIn = ({ setLoggedIn }) => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/login", { email, password }, { withCredentials: true })
         .then((res) =>{
-            console.log(res);
+            console.log("sign in response: ", res);
             localStorage.setItem("loggedIn", "true")
             setLoggedIn();
             navigate('/dashboard');

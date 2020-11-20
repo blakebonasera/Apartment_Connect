@@ -6,12 +6,17 @@ import RepairList from './RepairList';
 
 
 import {navigate} from '@reach/router';
+import {mergeSortArrObj} from '@hdanks/mern-library';
 
-const UserDashboard = props => {
+const UserDashboard = ({logout}) => {
     const [user, setUser] = useState({
         firstName: '',
         lastName: '',
-        email: ''
+        email: '',
+        maintenance: ''
+    })
+    const [userApt, setUserApt] = useState({
+
     })
     const [requestType, setRequestType] = useState("")
 
@@ -26,11 +31,27 @@ const UserDashboard = props => {
                 let user = res.data;
                 setUser(user)
                 console.log(user)
+                // if(res.data.maintenance) {
+                //     return (axios.get("http://localhost:8000/api/apartments", {withCredentials: true}), axios.get(`http://localhost:8000/api/getapt/${res.data._id}`))
+                // }
+                return axios.get(`http://localhost:8000/api/getapt/${res.data._id}`, {withCredentials: true})
+            })
+            .then(response => {
+                if (response.data[0]){
+                    let sortedRepairs = mergeSortArrObj(response.data[0].repairs.filter(repair => repair.status === false), "urgency").reverse()
+                    console.log("sorted Repairs: ", sortedRepairs)
+                    setUserApt({
+                        ...response.data[0],
+                        "repairs": sortedRepairs
+                    })
+                }
+                console.log(response.data[0])
             })
             .catch(err => {
                 console.log("not authorized");
-                console.log(err.response);
+                console.log("error" ,err);
                 navigate("/");
+                logout()
             });
     }, [])
 
@@ -65,7 +86,24 @@ const UserDashboard = props => {
                 <Calendar />:
                 ""
             }
-            
+            {
+                userApt.repairs ?
+                userApt.repairs.map((repair, i) => {
+                    return (
+                        <div key={i} >
+                        <div class="card mb-3" >
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-dark text-danger">{repair.details}</li>
+                                <li class="list-group-item bg-dark">{repair.location}</li>
+                                <li class="list-group-item bg-dark">{repair.urgency}</li>
+                                
+                            </ul>
+                        </div>
+                        </div>
+                    )
+                }):
+                ""
+            }
         </div>
     )
 }

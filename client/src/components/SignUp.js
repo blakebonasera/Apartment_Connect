@@ -27,7 +27,7 @@ const SignUp = (props) => {
             setEmail('');
             setPassword('');
             setConfirmPassword('');
-            setMaintenance();
+            setMaintenance('');
         })
         .catch((err)=>{
             console.log(err);
