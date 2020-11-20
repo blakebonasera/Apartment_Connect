@@ -52,7 +52,7 @@ const RepairList = props => {
         <div>
             <div className="container">
             <div className="row">
-                <div className="col-sm-8 ">
+                <div className="col-sm-8">
                     <h1>Repair List for Apartment {user.apartment} </h1>
                 </div>
             </div>

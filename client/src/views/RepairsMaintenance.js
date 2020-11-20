@@ -25,21 +25,20 @@ const RepairsMaintenance = props => {
     }, [])
     return (
         <div>
-            <p>Future maintenance page</p>
+            <h1 className="offset-3">Maintenance Portal</h1>
+            <br/>
             {
                 apartments.map(apartment => apartment.repairs.map((repair, i) => {
                     if (!repair.status){
 
                         return (
-                            <div key={i} id={i}>
-                                <div>
-                                    <h3>{repair.details}</h3>
-                                    <p>Location: {repair.location} of apartment {apartment.name} </p>
-                                    <p>{JSON.stringify(repair.status)}</p>
-                                </div>
-                                <div>
-                                    <button className="btn btn-primary" onClick={() => fixed(repair._id, i)}>Mark as fixed</button>
-                                </div>
+                            <div >
+                            <ul key={i} id={i} class="list-group">
+                                <li class="list-group-item bg-dark"><h3>Repair: {repair.details}</h3></li>
+                                <li class="list-group-item bg-dark">Location: {repair.location} of apartment {apartment.name} </li>
+                                <li class="list-group-item bg-dark">Completed? {JSON.stringify(repair.status)}</li>
+                                <li class="list-group-item bg-dark"><button className="btn btn-primary" onClick={() => fixed(repair._id, i)}>Mark as fixed</button></li>
+                            </ul>
                             </div>
                         )
                     }

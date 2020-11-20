@@ -97,11 +97,13 @@ const UserDashboard = ({logout}) => {
                 <Calendar />:
                 ""
             }
+            <div className="row">
             {
                 user.maintenance ?
-                <Link to="/maintenance">go to maintenance</Link>:
+                <Link className="btn btn-primary offset-4" to="/maintenance">Maintenance Portal</Link>:
                 ""
             }
+            </div>
         </div>
     )
 }
