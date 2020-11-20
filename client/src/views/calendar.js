@@ -6,15 +6,10 @@ const Calendar = props => {
             <div className="row offset-4">
                 <h2>Book an Area</h2>
             </div>
-        <div id ="calendar_container">
-        
-        <InlineWidget url="https://calendly.com/apartmentconnect" />
-        
-
-
+            <div id ="calendar_container">
+                <InlineWidget url="https://calendly.com/apartmentconnect" />
+            </div>
         </div>
-        </div>
-        
     )
 }
 export default Calendar;

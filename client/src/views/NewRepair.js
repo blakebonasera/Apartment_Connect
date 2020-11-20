@@ -127,8 +127,7 @@ const NewRepair = props => {
                     <h1 className="offset-sm-1">Repair Request</h1>
                 </div>
             <div className="container offset-1">
-            <div className="row">
-            </div>
+            
             <br/>
             <div className="row">
                 {
@@ -143,8 +142,8 @@ const NewRepair = props => {
                     />:
                     (
                         <div className="offset-2">    
-                        <p>Please add an apartment before requesting a repair.</p>
-                        <button className="btn btn-primary offset-4" onClick={() => navigate('/connect')}>Add Apartment</button>
+                            <p>Please add an apartment before requesting a repair.</p>
+                            <button className="btn btn-primary offset-4" onClick={() => navigate('/connect')}>Add Apartment</button>
                         </div>
                     )
                 }

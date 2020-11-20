@@ -3,10 +3,9 @@ import axios from 'axios';
 import Calendar from './calendar';
 import NewRepair from './NewRepair';
 import RepairList from './RepairList';
-
-import {navigate, Router, Link} from '@reach/router';
+import {navigate, Link} from '@reach/router';
 import {mergeSortArrObj} from '@hdanks/mern-library';
-import RepairsMaintenance from './RepairsMaintenance';
+
 
 const UserDashboard = ({logout}) => {
     const [user, setUser] = useState({
@@ -68,7 +67,7 @@ const UserDashboard = ({logout}) => {
 
     return (
         <div className="container">
-            <div className="row offset-3">
+            <div className="row offset-sm-3">
             <h2>Welcome {user.firstName}</h2>
             </div>
             <div className="row ">

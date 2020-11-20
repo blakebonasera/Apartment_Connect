@@ -62,23 +62,25 @@ const RepairList = props => {
                     user.apartment ?
                     (
                     <> 
-                    {repairList.map((item, i) => <div key={i} >
-                        <div class="card mb-3" >
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item bg-dark text-danger">{item.details}</li>
-                                <li class="list-group-item bg-dark">{item.location}</li>
-                                <li class="list-group-item bg-dark">{item.urgency}</li>
-                                <li class="list-group-item bg-dark ">Completed? {item.status === true ? <span className="text-success">Yes</span>:<span className="text-danger">No</span>}</li>
-                            </ul>
+                    {repairList.map((item, i) => 
+                        <div key={i} >
+                            <div class="card mb-3" >
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-dark text-danger">{item.details}</li>
+                                    <li class="list-group-item bg-dark">{item.location}</li>
+                                    <li class="list-group-item bg-dark">{item.urgency}</li>
+                                    <li class="list-group-item bg-dark ">Completed? {item.status === true ? <span className="text-success">Yes</span>:<span className="text-danger">No</span>}</li>
+                                </ul>
+                            </div>
                         </div>
-                        </div>)}
+                    )}
                     </>
                     )
                     :
                     (
                         <div>    
-                        <p>Please add an apartment to view repairs.</p>
-                        <button className="btn btn-primary" onClick={() => navigate('/connect')}>Add Apartment</button>
+                            <p>Please add an apartment to view repairs.</p>
+                            <button className="btn btn-primary" onClick={() => navigate('/connect')}>Add Apartment</button>
                         </div>
                     )
                 }

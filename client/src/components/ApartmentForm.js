@@ -57,20 +57,20 @@ const ApartmentForm = props => {
         
         <form onSubmit={submitHandler}>
             <legend className="offset-1">Claim your apartment for ability to request repairs and reserve common areas</legend>
-            <div className="row form-group offset-3">
-                <label htmlFor="apartments">Apartment :</label>
-                <select name="apartments" onChange={changeHandler}  >
-                    <option>Select your apartment</option>
-                    {
-                        apartments
-                        .sort((a,b)=>(a.name > b.name)? 1:-1)
-                        .map((item,i)=> <option value={item._id} key={i}>{item.name}</option>)
-                    }
-                </select>
-            </div>
-            <div className="row form- offset-4">
-                <input type="submit" value="Add User as Tenant" className="btn btn-primary"/>
-            </div>
+                <div className="row form-group offset-3">
+                    <label htmlFor="apartments">Apartment :</label>
+                    <select name="apartments" onChange={changeHandler}  >
+                        <option>Select your apartment</option>
+                        {
+                            apartments
+                            .sort((a,b)=>(a.name > b.name)? 1:-1)
+                            .map((item,i)=> <option value={item._id} key={i}>{item.name}</option>)
+                        }
+                    </select>
+                </div>
+                <div className="row form- offset-4">
+                    <input type="submit" value="Add User as Tenant" className="btn btn-primary"/>
+                </div>
         </form>
     )
 }

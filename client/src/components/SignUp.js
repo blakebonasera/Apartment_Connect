@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-
 import axios from 'axios';
-import { navigate } from '@reach/router';
 
 const SignUp = (props) => {
     const {setLoggedIn} = props
@@ -92,7 +90,7 @@ const SignUp = (props) => {
                     </select>
                 </div>
                 <div className="form-group">
-                <input type="submit" value="Sign Up" className="btn btn-success" />
+                    <input type="submit" value="Sign Up" className="btn btn-success" />
                 </div>
             </form>
         </fieldset>

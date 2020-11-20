@@ -33,12 +33,12 @@ const RepairsMaintenance = props => {
 
                         return (
                             <div >
-                            <ul key={i} id={i} class="list-group">
-                                <li class="list-group-item bg-dark"><h3>Repair: {repair.details}</h3></li>
-                                <li class="list-group-item bg-dark">Location: {repair.location} of apartment {apartment.name} </li>
-                                <li class="list-group-item bg-dark">Completed? {JSON.stringify(repair.status)}</li>
-                                <li class="list-group-item bg-dark"><button className="btn btn-primary" onClick={() => fixed(repair._id, i)}>Mark as fixed</button></li>
-                            </ul>
+                                <ul key={i} id={i} class="list-group">
+                                    <li class="list-group-item bg-dark"><h3>Repair: {repair.details}</h3></li>
+                                    <li class="list-group-item bg-dark">Location: {repair.location} of apartment {apartment.name} </li>
+                                    <li class="list-group-item bg-dark">Completed? {JSON.stringify(repair.status)}</li>
+                                    <li class="list-group-item bg-dark"><button className="btn btn-primary" onClick={() => fixed(repair._id, i)}>Mark as fixed</button></li>
+                                </ul>
                             </div>
                         )
                     }
