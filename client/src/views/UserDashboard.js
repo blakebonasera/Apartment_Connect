@@ -97,7 +97,11 @@ const UserDashboard = ({logout}) => {
                 <Calendar />:
                 ""
             }
-            <Link to="/maintenance">go to maintenance</Link>
+            {
+                user.maintenance ?
+                <Link to="/maintenance">go to maintenance</Link>:
+                ""
+            }
         </div>
     )
 }
