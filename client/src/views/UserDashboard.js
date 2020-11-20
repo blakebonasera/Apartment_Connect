@@ -97,11 +97,13 @@ const UserDashboard = ({logout}) => {
                 <Calendar />:
                 ""
             }
+            <div className="row">
             {
                 user.maintenance ?
-                <button className="btn btn-primary" onClick={()=> navigate('/maintenance')}>View open Repairs</button>:
+                <Link className="btn btn-primary offset-4" to="/maintenance">Maintenance Portal</Link>:
                 ""
             }
+            </div>
         </div>
     )
 }
