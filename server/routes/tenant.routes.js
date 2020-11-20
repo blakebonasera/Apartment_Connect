@@ -30,5 +30,4 @@ module.exports = app => {
     //logout
     app.post("/api/logout", uController.logout);
     // this route now has to be authenticated
-
 }
