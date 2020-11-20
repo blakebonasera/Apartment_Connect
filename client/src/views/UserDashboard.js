@@ -86,7 +86,7 @@ const UserDashboard = ({logout}) => {
                                 <li class="list-group-item bg-dark text-danger">{repair.details}</li>
                                 <li class="list-group-item bg-dark">{repair.location}</li>
                                 <li class="list-group-item bg-dark">{repair.urgency}</li>
-                                
+                                <li class="list-group-item bg-dark ">Completed? {repair.status === true ? <span className="text-success">Yes</span>:<span className="text-danger">No</span>}</li>
                             </ul>
                         </div>
                         </div>
