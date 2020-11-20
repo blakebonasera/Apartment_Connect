@@ -4,9 +4,9 @@ import Calendar from './calendar';
 import NewRepair from './NewRepair';
 import RepairList from './RepairList';
 
-
-import {navigate} from '@reach/router';
+import {navigate, Router, Link} from '@reach/router';
 import {mergeSortArrObj} from '@hdanks/mern-library';
+import RepairsMaintenance from './RepairsMaintenance';
 
 const UserDashboard = ({logout}) => {
     const [user, setUser] = useState({
@@ -24,6 +24,7 @@ const UserDashboard = ({logout}) => {
         setRequestType(type)
     }
 
+    const [repairsList, setRepairsList] = useState([])
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/users/loggedin`, {withCredentials: true})
@@ -31,12 +32,16 @@ const UserDashboard = ({logout}) => {
                 let user = res.data;
                 setUser(user)
                 console.log(user)
-                // if(res.data.maintenance) {
-                //     return (axios.get("http://localhost:8000/api/apartments", {withCredentials: true}), axios.get(`http://localhost:8000/api/getapt/${res.data._id}`))
-                // }
-                return axios.get(`http://localhost:8000/api/getapt/${res.data._id}`, {withCredentials: true})
+                if(res.data.maintenance) {
+                    console.log("I'm a maintenance worker, give me all apts.")
+                    return (axios.get("http://localhost:8000/api/apartments", {withCredentials: true}))
+                } else {
+                    console.log("just give me my apt")
+                    return axios.get(`http://localhost:8000/api/getapt/${res.data._id}`, {withCredentials: true})
+                }
             })
             .then(response => {
+                console.log("response: ", response.data)
                 if (response.data[0]){
                     let sortedRepairs = mergeSortArrObj(response.data[0].repairs.filter(repair => repair.status === false), "urgency").reverse()
                     console.log("sorted Repairs: ", sortedRepairs)
@@ -45,7 +50,13 @@ const UserDashboard = ({logout}) => {
                         "repairs": sortedRepairs
                     })
                 }
-                console.log(response.data[0])
+                // let aptList= response.data.map((item, i) => item)
+                // for(let apt = 0; apt < aptList.length; apt++){
+                //     let aptRepairList = apt.repairs.map((item, i) => item)
+                //     for(let repair = 0; repair < aptRepairList.length; repair++){
+                //         setRepairsList([...repairsList, aptRepairList[repair]])
+                //     }
+                // }
             })
             .catch(err => {
                 console.log("not authorized");
@@ -86,24 +97,11 @@ const UserDashboard = ({logout}) => {
                 <Calendar />:
                 ""
             }
-            {/* {
-                userApt.repairs ?
-                userApt.repairs.map((repair, i) => {
-                    return (
-                        <div key={i} >
-                        <div class="card mb-3" >
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item bg-dark text-danger">{repair.details}</li>
-                                <li class="list-group-item bg-dark">{repair.location}</li>
-                                <li class="list-group-item bg-dark">{repair.urgency}</li>
-                                <li class="list-group-item bg-dark ">Completed? {repair.status === true ? <span className="text-success">Yes</span>:<span className="text-danger">No</span>}</li>
-                            </ul>
-                        </div>
-                        </div>
-                    )
-                }):
+            {
+                user.maintenance ?
+                <Link to="/maintenance">go to maintenance</Link>:
                 ""
-            } */}
+            }
         </div>
     )
 }
