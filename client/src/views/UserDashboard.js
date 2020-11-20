@@ -57,16 +57,16 @@ const UserDashboard = ({logout}) => {
 
     return (
         <div className="container">
-            <div className="row offset-4">
+            <div className="row offset-3">
             <h2>Welcome {user.firstName}</h2>
             </div>
-            <div className="row offset-3">
+            <div className="row ">
                 <div className="col-4">
-                <button className="btn btn-primary mr-5" onClick={() => request("repair") }>Repairs</button>
+                <button className="btn btn-primary " onClick={() => request("repair") }>Repairs</button>
                 </div>
 
                 <div className="col-4">
-                <button className="btn btn-primary mr-5" onClick={() => request("listrepairs") }>List Repairs</button>
+                <button className="btn btn-primary " onClick={() => request("listrepairs") }>List Repairs</button>
                 </div>
 
                 <div className="col-4">
@@ -86,7 +86,7 @@ const UserDashboard = ({logout}) => {
                 <Calendar />:
                 ""
             }
-            {
+            {/* {
                 userApt.repairs ?
                 userApt.repairs.map((repair, i) => {
                     return (
@@ -103,7 +103,7 @@ const UserDashboard = ({logout}) => {
                     )
                 }):
                 ""
-            }
+            } */}
         </div>
     )
 }

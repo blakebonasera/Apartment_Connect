@@ -51,20 +51,29 @@ const RepairList = props => {
     
     return (
         <div>
-            <div className="container offset-1">
+            <div className="container">
             <div className="row">
-                <div className="col-sm-8 offset-sm-3">
+                <div className="col-sm-8 ">
                     <h1>Repair List for Apartment {user.apartment} </h1>
                 </div>
             </div>
             <br/>
-            <div className="row">
+            <div >
                 {
                     user.apartment ?
                     (
-                    <ul> 
-                    {repairList.map((item, i) => <li key={i}>{item.details} | {item.location} | {item.urgency} | {item.status}</li>)}
-                    </ul>
+                    <> 
+                    {repairList.map((item, i) => <div key={i} >
+                        <div class="card mb-3" >
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-dark text-danger">{item.details}</li>
+                                <li class="list-group-item bg-dark">{item.location}</li>
+                                <li class="list-group-item bg-dark">{item.urgency}</li>
+                                <li class="list-group-item bg-dark ">Completed? {item.status === true ? <span className="text-success">Yes</span>:<span className="text-danger">No</span>}</li>
+                            </ul>
+                        </div>
+                        </div>)}
+                    </>
                     )
                     :
                     (
